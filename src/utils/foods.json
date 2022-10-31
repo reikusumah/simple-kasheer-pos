@@ -1,0 +1,18 @@
+{
+  "foods": [
+    {
+      "id": 1,
+      "name": "Pizza",
+      "image": "pizza.jpg",
+      "category": "meal",
+      "price": 13000
+    },
+    {
+      "id": 2,
+      "name": "Kebab",
+      "image": "kebab.jpg",
+      "category": "meal",
+      "price": 15000
+    }
+  ]
+}

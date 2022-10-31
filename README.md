@@ -1,3 +1,10 @@
+### Module List:
+
+1. react-redux
+2. @reduxjs/toolkit
+3. @redux-devtools/extension
+4. styled-components
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
