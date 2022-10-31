@@ -1,3 +1,5 @@
+### Click for [Demo](https://simple-kasheer-pos.netlify.app)
+
 ### Module List:
 
 1. react-redux
