@@ -35,7 +35,7 @@ const Price = styled.div`
 `;
 
 const CartItem = () => {
-  const [count, setCount] = useState(1);
+  const [count] = useState(1);
   return (
     <Cart>
       <ItemName>Item</ItemName>
