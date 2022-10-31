@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import ProductCard from "./components/ProductCard";
 import styled, { ThemeProvider } from "styled-components";
 import * as theme from "./styled/theme";
+import CartItem from "./components/CartItem";
+import ListMenu from "./components/ListMenu";
 
 const Container = styled.div`
   display: flex;
@@ -20,13 +22,14 @@ const ProductContainer = styled.div`
   width: 60%;
   height: 100%;
   background: ${(props) => props.theme.light};
-  border-left: ${(props) => props.theme.grey};
-  border-right: ${(props) => props.theme.grey};
-  padding: 0.5rem 0;
+  border-left: 1px solid ${(props) => props.theme.grey};
+  border-right: 1px solid ${(props) => props.theme.grey};
+  padding: 0.5rem 1rem;
 `;
 
 const ProductTitle = styled.h2`
   margin-bottom: 1.5rem;
+  color: ${(props) => props.theme.primary};
 `;
 
 const CartContainer = styled.div`
@@ -39,12 +42,16 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <Container>
-        <MenuContainer>Menu</MenuContainer>
+        <MenuContainer>
+          <ListMenu />
+        </MenuContainer>
         <ProductContainer>
-          <ProductTitle>Products</ProductTitle>
+          <ProductTitle>Makanan</ProductTitle>
           <ProductCard />
         </ProductContainer>
-        <CartContainer>Cart</CartContainer>
+        <CartContainer>
+          <CartItem />
+        </CartContainer>
       </Container>
     </ThemeProvider>
   );

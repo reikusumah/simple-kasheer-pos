@@ -38,5 +38,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "1. react-redux\r 2. @reduxjs/toolkit\r 3. @redux-devtools/extension\r 4. styled-components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reikusumah/simple-kasheer-pos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reikusumah/simple-kasheer-pos/issues"
+  },
+  "homepage": "https://github.com/reikusumah/simple-kasheer-pos#readme"
 }
