@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Counter from "./Counter";
 
@@ -35,7 +35,7 @@ const Price = styled.div`
 `;
 
 const CartItem = () => {
-  const [count] = useState(1);
+  const count = 1;
   return (
     <Cart>
       <ItemName>Item</ItemName>

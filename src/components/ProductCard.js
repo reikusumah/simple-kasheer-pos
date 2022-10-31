@@ -22,7 +22,6 @@ const Image = styled.img`
 const ProductCard = () => {
   const foodsData = useSelector((state) => state.foods.foods.foods);
 
-  console.log(foodsData);
   return (
     <CardList>
       {foodsData.map((food) => {
