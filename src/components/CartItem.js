@@ -34,17 +34,18 @@ const Price = styled.div`
   text-align: center;
 `;
 
-const CartItem = () => {
-  const count = 1;
+const CartItem = (props) => {
+  const item = props.item;
+
   return (
     <Cart>
-      <ItemName>Item</ItemName>
+      <ItemName>{item.name}</ItemName>
       <CounterContainer>
         <Counter dec />
-        <CounterTotal>{count}</CounterTotal>
+        <CounterTotal>1</CounterTotal>
         <Counter inc />
       </CounterContainer>
-      <Price>27000</Price>
+      <Price>{item.price}</Price>
     </Cart>
   );
 };

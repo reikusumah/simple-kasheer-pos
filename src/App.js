@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
+import { useSelector } from "react-redux";
+import styled, { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import ProductCard from "./components/ProductCard";
-import styled, { ThemeProvider } from "styled-components";
 import * as theme from "./styled/theme";
 import CartItem from "./components/CartItem";
 import ListMenu from "./components/ListMenu";
+import CalculateBox from "./components/CalculateBox";
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +40,8 @@ const CartContainer = styled.div`
 `;
 
 function App() {
+  const carts = useSelector((state) => state.foods.cart);
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -50,7 +54,17 @@ function App() {
           <ProductCard />
         </ProductContainer>
         <CartContainer>
-          <CartItem />
+          <p style={{ marginLeft: "0.5rem" }}>
+            {carts ? `${carts.length} item in cart` : `0 item in cart`}
+          </p>
+          {carts.map((item) => {
+            return (
+              <div key={item.id}>
+                <CartItem item={item}></CartItem>
+              </div>
+            );
+          })}
+          <CalculateBox />
         </CartContainer>
       </Container>
     </ThemeProvider>

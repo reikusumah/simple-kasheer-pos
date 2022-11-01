@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { addCart } from "../app/reducers/foodSlice";
 
 const CardList = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ const CardList = styled.div`
 const Card = styled.div`
   margin-right: 1rem;
   text-align: center;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
@@ -21,12 +23,17 @@ const Image = styled.img`
 
 const ProductCard = () => {
   const foodsData = useSelector((state) => state.foods.foods.foods);
+  const dispatch = useDispatch();
+
+  const addToCart = (id) => {
+    dispatch(addCart(id));
+  };
 
   return (
     <CardList>
       {foodsData.map((food) => {
         return (
-          <Card key={food.id}>
+          <Card key={food.id} onClick={() => addToCart(food.id)}>
             <Image
               src={require(`../assets/foods/${food.image}`)}
               alt={food.name}

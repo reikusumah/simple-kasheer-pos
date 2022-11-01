@@ -9,7 +9,24 @@ const initialState = {
 const foodSlice = createSlice({
   name: "foods",
   initialState,
-  reducers: {},
+  reducers: {
+    addCart: (state, action) => {
+      const itemInCart = state.cart.find((item) => item.id === action.payload);
+      const newItemCart = state.foods.foods.find(
+        (item) => item.id === action.payload
+      );
+      if (!itemInCart) {
+        return {
+          ...state,
+          cart: [...state.cart, newItemCart],
+        };
+      } else {
+        return state;
+      }
+    },
+  },
 });
+
+export const { addCart } = foodSlice.actions;
 
 export default foodSlice.reducer;
