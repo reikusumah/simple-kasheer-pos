@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Counter from "./Counter";
-import { addStockBuy, reduceStockBuy } from "../app/reducers/foodSlice";
+import {
+  addStockBuy,
+  reduceStockBuy,
+  removeFromCart,
+} from "../app/reducers/foodSlice";
 
 const Cart = styled.div`
   display: flex;
@@ -47,13 +51,14 @@ const CartItem = (props) => {
   };
 
   const decrement = (id) => {
+    setCount(count - 1);
     if (count > 1) {
-      setCount(count - 1);
       dispatch(reduceStockBuy(id));
+    } else if (count === 1) {
+      dispatch(removeFromCart(id));
     }
   };
 
-  console.log(count);
   return (
     <Cart>
       <ItemName>{item.name}</ItemName>

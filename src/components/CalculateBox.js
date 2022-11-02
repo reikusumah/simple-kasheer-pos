@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "./Button";
+import { resetAllCart } from "../app/reducers/foodSlice";
 
 const Box = styled.div`
   position: fixed;
@@ -49,23 +51,49 @@ const BtnBox = styled.div`
 `;
 
 const CalculateBox = () => {
+  const [pay, setPay] = useState("");
+  const [change, setChange] = useState("");
+  const dispatch = useDispatch();
+  const carts = useSelector((state) => state.foods.cart);
+
+  const total = carts.reduce(
+    (totalPrice, currentPrice) => totalPrice + currentPrice.price,
+    0
+  );
+
+  const calculateChange = () => {
+    if (pay > total) {
+      setChange(pay - total);
+    }
+  };
+
+  const handleChange = (e) => {
+    setPay(e.target.value);
+  };
+
+  const resetCart = () => {
+    dispatch(resetAllCart());
+    setChange("");
+    setPay("");
+  };
+
   return (
     <Box>
       <Total>
         <h4>Total</h4>
-        <p>23000</p>
+        <p>{total}</p>
       </Total>
       <Pay>
         <p>Jumlah Bayar</p>
-        <input type="number" />
+        <input type="number" value={pay} onChange={handleChange} />
       </Pay>
       <Change>
         <p>Kembalian</p>
-        <p>10000</p>
+        <p>{change}</p>
       </Change>
       <BtnBox>
-        <Button primary></Button>
-        <Button></Button>
+        <Button primary action={calculateChange} text="Selesai" />
+        <Button action={resetCart} text="Reset" />
       </BtnBox>
     </Box>
   );

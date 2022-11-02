@@ -16,17 +16,23 @@ const MyButton = styled.button`
 
 const PrimaryButton = styled(MyButton)`
   background: ${(props) => props.theme.primary};
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const WarningButton = styled(MyButton)`
   background: ${(props) => props.theme.tertiary};
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-const Button = ({ primary }) => {
+const Button = ({ primary, action, text }) => {
   if (primary) {
-    return <PrimaryButton>Selesai</PrimaryButton>;
+    return <PrimaryButton onClick={action}>{text}</PrimaryButton>;
   } else {
-    return <WarningButton>Cancel</WarningButton>;
+    return <WarningButton onClick={action}>{text}</WarningButton>;
   }
 };
 

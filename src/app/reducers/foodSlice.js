@@ -24,6 +24,12 @@ const foodSlice = createSlice({
         return state;
       }
     },
+    removeFromCart: (state, action) => {
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
+    },
     addStockBuy: (state, action) => {
       const originalPrice = state.foods.foods.find(
         (item) => item.id === action.payload
@@ -62,9 +68,21 @@ const foodSlice = createSlice({
         cart: decrementCart,
       };
     },
+    resetAllCart: (state) => {
+      return {
+        ...state,
+        cart: [],
+      };
+    },
   },
 });
 
-export const { addCart, addStockBuy, reduceStockBuy } = foodSlice.actions;
+export const {
+  addCart,
+  removeFromCart,
+  addStockBuy,
+  reduceStockBuy,
+  resetAllCart,
+} = foodSlice.actions;
 
 export default foodSlice.reducer;

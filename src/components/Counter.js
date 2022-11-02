@@ -7,8 +7,9 @@ const CounterStyle = styled.button`
   color: ${(props) => props.theme.light};
   height: 1.25rem;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 100px;
   text-align: center;
   cursor: pointer;
