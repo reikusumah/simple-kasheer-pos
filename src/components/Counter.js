@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const CounterStyle = styled.div`
+const CounterStyle = styled.button`
   width: 1.25rem;
   background: ${(props) => props.theme.secondary};
   color: ${(props) => props.theme.light};
@@ -16,9 +16,9 @@ const CounterStyle = styled.div`
 
 const Counter = ({ inc, dec }) => {
   if (inc) {
-    return <CounterStyle>+</CounterStyle>;
-  } else {
-    return <CounterStyle>-</CounterStyle>;
+    return <CounterStyle onClick={inc}>+</CounterStyle>;
+  } else if (dec) {
+    return <CounterStyle onClick={dec}>-</CounterStyle>;
   }
 };
 

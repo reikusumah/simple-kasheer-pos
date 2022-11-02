@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Counter from "./Counter";
+import { addStockBuy, reduceStockBuy } from "../app/reducers/foodSlice";
 
 const Cart = styled.div`
   display: flex;
@@ -35,15 +37,30 @@ const Price = styled.div`
 `;
 
 const CartItem = (props) => {
+  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
   const item = props.item;
 
+  const increment = (id) => {
+    setCount(count + 1);
+    dispatch(addStockBuy(id));
+  };
+
+  const decrement = (id) => {
+    if (count > 1) {
+      setCount(count - 1);
+      dispatch(reduceStockBuy(id));
+    }
+  };
+
+  console.log(count);
   return (
     <Cart>
       <ItemName>{item.name}</ItemName>
       <CounterContainer>
-        <Counter dec />
-        <CounterTotal>1</CounterTotal>
-        <Counter inc />
+        <Counter dec={() => decrement(item.id)} />
+        <CounterTotal>{count}</CounterTotal>
+        <Counter inc={() => increment(item.id)} />
       </CounterContainer>
       <Price>{item.price}</Price>
     </Cart>

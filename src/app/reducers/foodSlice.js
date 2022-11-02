@@ -24,9 +24,47 @@ const foodSlice = createSlice({
         return state;
       }
     },
+    addStockBuy: (state, action) => {
+      const originalPrice = state.foods.foods.find(
+        (item) => item.id === action.payload
+      ).price;
+      const incrementCart = state.cart.map((item) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            price: item.price + originalPrice,
+          };
+        } else {
+          return item;
+        }
+      });
+      return {
+        ...state,
+        cart: incrementCart,
+      };
+    },
+    reduceStockBuy: (state, action) => {
+      const originalPrice = state.foods.foods.find(
+        (item) => item.id === action.payload
+      ).price;
+      const decrementCart = state.cart.map((item) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            price: item.price - originalPrice,
+          };
+        } else {
+          return item;
+        }
+      });
+      return {
+        ...state,
+        cart: decrementCart,
+      };
+    },
   },
 });
 
-export const { addCart } = foodSlice.actions;
+export const { addCart, addStockBuy, reduceStockBuy } = foodSlice.actions;
 
 export default foodSlice.reducer;
